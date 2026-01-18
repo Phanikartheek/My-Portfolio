@@ -85,7 +85,7 @@ const Navigation = () => {
               onClick={() => scrollToSection("#home")}
               className="text-xl font-bold gradient-text cursor-pointer"
             >
-              Teja Thota
+              PhaniKartheek Vellanki
             </div>
 
             {/* Desktop Menu */}

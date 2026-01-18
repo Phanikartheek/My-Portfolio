@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import profileImage from "@/assets/teja-profile.jpg";
+import profileImage from "@/assets/phani.jpeg";
 
 const AboutSection = () => {
   return (
@@ -34,7 +34,7 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-glow rounded-full blur-xl opacity-50 animate-pulse-glow" />
               <img
                 src={profileImage}
-                alt="Teja Thota"
+                alt="Vellanki PhaniKartheek"
                 className="relative w-80 h-80 rounded-full border-4 border-primary/30 shadow-hero object-cover object-[100%_10%]"
               />
             </div>

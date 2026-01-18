@@ -196,7 +196,7 @@ const ContactSection = () => {
                 Download my complete resume to learn more about my experience, skills, and achievements.
               </p>
               <a
-                href="/resume/Teja_Thota_Resume.pdf"
+                href="/resume/phanikartheek resume.pdf"
                 download
                 className="block"
               >

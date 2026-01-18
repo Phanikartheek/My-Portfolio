@@ -75,7 +75,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Hi, I'm{" "}
-            <span className="gradient-text">Teja Thota</span>
+            <span className="gradient-text">Vellanki PhaniKartheek</span>
           </motion.h1>
           
           <motion.div
@@ -114,7 +114,7 @@ const HeroSection = () => {
               Explore My Work
             </Button>
             <a
-              href="/resume/Teja_Thota_Resume.pdf"
+              href="/resume/Phani-kartheek-resume.pdf"
               download
             >
             <Button 
