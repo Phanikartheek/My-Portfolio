@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 /* 🔐 Admin secret */
-const ADMIN_SECRET = "phani-admin-2026";
+const ADMIN_SECRET = "phani@987#";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
