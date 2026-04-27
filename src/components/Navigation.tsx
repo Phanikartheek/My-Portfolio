@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 /* 🔐 Admin secret */
-const ADMIN_SECRET = "phani@987#";
+const ADMIN_SECRET = "Phani@987#";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -107,7 +107,6 @@ const Navigation = () => {
                   className="ml-3 flex items-center gap-1 px-4 py-2 text-sm border border-primary text-primary rounded-lg hover:bg-primary hover:text-white"
                 >
                   <ShieldCheck className="w-4 h-4" />
-                  Admin
                 </button>
               ) : (
                 <button

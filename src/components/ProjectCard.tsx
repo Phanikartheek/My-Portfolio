@@ -73,15 +73,6 @@ const ProjectCard = ({
               </Badge>
             )}
 
-            {isAdminProject && (
-              <Badge
-                variant="secondary"
-                className="flex items-center gap-1 bg-primary/10 text-primary border border-primary/30"
-              >
-                <ShieldCheck className="w-3 h-3" />
-                Admin
-              </Badge>
-            )}
           </div>
         </div>
 
