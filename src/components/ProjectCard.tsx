@@ -34,6 +34,11 @@ const ProjectCard = ({
   const isPrivate = !githubUrl;
   const isAdminProject = Boolean(onDelete);
 
+  const formatUrl = (url: string) => {
+    if (!url) return "";
+    return url.startsWith("http://") || url.startsWith("https://") ? url : `https://${url}`;
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -58,34 +63,31 @@ const ProjectCard = ({
 
         {/* Title + Badges */}
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+          <h3 className="text-xl font-bold font-display text-foreground group-hover:text-primary transition-colors">
             {title}
           </h3>
-
-          <div className="flex gap-2">
-            {isPrivate && (
-              <Badge
-                variant="secondary"
-                className="flex items-center gap-1 bg-destructive/10 text-destructive border border-destructive/30"
-              >
-                <Lock className="w-3 h-3" />
-                Private
-              </Badge>
-            )}
-
-          </div>
+          {isPrivate && (
+            <Badge variant="outline" className="text-muted-foreground border-muted-foreground/30 flex items-center gap-1">
+              <Lock className="w-3 h-3" /> Private
+            </Badge>
+          )}
+          {isAdminProject && (
+            <Badge variant="outline" className="text-red-400 border-red-400/30 flex items-center gap-1">
+              <ShieldCheck className="w-3 h-3" /> Admin
+            </Badge>
+          )}
         </div>
 
         {/* Description */}
-        <p className="text-muted-foreground mb-4 flex-grow leading-relaxed">
+        <p className="text-muted-foreground text-sm mb-4 line-clamp-4 leading-relaxed">
           {description}
         </p>
 
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {techStack.map((tech, index) => (
+        {/* Tech Stack Badges */}
+        <div className="flex flex-wrap gap-1.5 mb-6">
+          {techStack.map((tech, i) => (
             <Badge
-              key={index}
+              key={i}
               variant="secondary"
               className="bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors"
             >
@@ -101,7 +103,7 @@ const ProjectCard = ({
               variant="glass"
               size="sm"
               className="flex-1"
-              onClick={() => window.open(githubUrl, "_blank")}
+              onClick={() => window.open(formatUrl(githubUrl), "_blank")}
             >
               <Github className="w-4 h-4 mr-2" />
               GitHub
@@ -123,7 +125,7 @@ const ProjectCard = ({
               variant="cyber"
               size="sm"
               className="flex-1"
-              onClick={() => window.open(demoUrl, "_blank")}
+              onClick={() => window.open(formatUrl(demoUrl), "_blank")}
             >
               <ExternalLink className="w-4 h-4 mr-2" />
               Live Demo
