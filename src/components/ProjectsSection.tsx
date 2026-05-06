@@ -9,8 +9,8 @@ const GITHUB_USERNAME = "Phanikartheek";
 
 /* ⚠️ Move to .env later */
 const supabase = createClient(
-  "https://faqlsshfbgpagplsxvkx.supabase.co",
-  "sb_publishable_uBnwSI6CoToeAodFFj9nOA_oxDyE2Mu"
+  "https://genpvvefsklsgjziybya.supabase.co",
+  "sb_publishable_M_s2U3Cb7AZ1AywapkeoPg_GUujD4EM"
 );
 
 /* ---------------- COMPONENT ---------------- */
