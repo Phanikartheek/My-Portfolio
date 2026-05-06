@@ -47,20 +47,24 @@ const ProjectsSection = () => {
   }, []);
 
   /* ---------------- FETCH MANUAL PROJECTS ---------------- */
+  /* ---------------- FETCH MANUAL PROJECTS ---------------- */
   const fetchManualProjects = async () => {
     const { data, error } = await supabase
       .from("projects")
       .select("*")
       .order("created_at", { ascending: false });
 
+    console.log("Supabase fetch data:", data);
+    if (error) console.error("Supabase fetch error:", error);
+
     if (!error && data) {
       setManualProjects(
         data.map((p: any) => ({
-          title: p.title,
-          description: p.description,
-          techStack: p.tech_stack || [],
-          githubUrl: p.github_url || undefined,
-          demoUrl: p.demo_url || undefined,
+          title: p.title || p.name || "",
+          description: p.description || "",
+          techStack: p.tech_stack || p.techStack || p.skills || [],
+          githubUrl: p.github_url || p.githubUrl || p.github_link || undefined,
+          demoUrl: p.demo_url || p.demoUrl || p.demo_link || p.demoLink || p.live_url || p.live_link || p.demo || undefined,
           isManual: true,
         }))
       );
@@ -79,8 +83,8 @@ const ProjectsSection = () => {
         .filter(repo => !repo.fork)
         .sort(
           (a, b) =>
-            new Date(b.updated_at).getTime() -
-            new Date(a.updated_at).getTime()
+              new Date(b.updated_at).getTime() -
+              new Date(a.updated_at).getTime()
         )
         .map(repo => ({
           title: repo.name.replace(/-/g, " "),
@@ -104,13 +108,20 @@ const ProjectsSection = () => {
 
   /* ---------------- ADD PROJECT ---------------- */
   const handleSaveProject = async () => {
-    await supabase.from("projects").insert({
+    const { error } = await supabase.from("projects").insert({
       title,
       description,
       tech_stack: skills.split(",").map(s => s.trim()),
       github_url: githubUrl || null,
       demo_url: demoUrl || null,
     });
+
+    if (error) {
+      console.error("Supabase insert error:", error);
+      alert(`Database Insert Error: ${error.message || JSON.stringify(error)}`);
+    } else {
+      console.log("Supabase insert success!");
+    }
 
     await fetchManualProjects();
 
